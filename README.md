@@ -27,7 +27,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
   --selector=app.kubernetes.io/component=controller \
-  --timeout=90s
+  --timeout=100s
 
 kubectl -n ingress-nginx get pod -o wide
 
@@ -113,9 +113,9 @@ ngrok http 8080
     Secret: This is the secret you've stored in the $TEKTON_SECRET environment variables.
 
 server.js ln 6 change to 
-res.send({ message: "Hello", change: "changed one" }).status(200);
+res.send({ message: "Hello", change: "changed two" }).status(200);
 
-git commit -am "Change a server response one"
+git commit -am "Change a server response two"
 git push origin main
 
 tkn pipelineruns ls
