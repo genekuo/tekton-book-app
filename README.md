@@ -107,10 +107,15 @@ kubectl port-forward svc/el-listener 8080
 brew install ngrok/ngrok/ngrok
 ngrok http 8080
 
+## go to GitHub and add a new webhook to your repository
+    Payload URL: This is your public ngrok URL.
+    Content Type: This should be changed to application/json.
+    Secret: This is the secret you've stored in the $TEKTON_SECRET environment variables.
+
 server.js ln 6 change to 
 res.send({ message: "Hello", change: "changed twice" }).status(200);
 
-git commit -am "Change a server response twice"
+git commit -am "Change a server response three"
 git push origin main
 
 tkn pipelineruns ls
