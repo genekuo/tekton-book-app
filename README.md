@@ -105,13 +105,12 @@ kubectl apply -f ./trigger.yaml
 kubectl port-forward svc/el-listener 8080
 
 brew install ngrok/ngrok/ngrok
-?ngrok authtoken <token>
 ngrok http 8080
 
 server.js ln 6 change to 
 res.send({ message: "Hello", change: "changed twice" }).status(200);
 
-git commit -am "Change a server response twice"
+git commit -am "Change a server response once"
 git push origin main
 
 tkn pipelineruns ls
