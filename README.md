@@ -113,11 +113,19 @@ ngrok http 8080
     Secret: This is the secret you've stored in the $TEKTON_SECRET environment variables.
 
 server.js ln 6 change to 
-res.send({ message: "Hello", change: "changed two" }).status(200);
+res.send({ message: "Hello", change: "changed three" }).status(200);
 
-git commit -am "Change a server response two"
+git commit -am "Change a server response three"
 git push origin main
 
 tkn pipelineruns ls
+
+curl localhost
+
+kubectl apply --filename https://github.com/tektoncd/dashboard/releases/latest/download/tekton-dashboard-release.yaml
+kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
+
+http://localhost:9097
+
  
 
