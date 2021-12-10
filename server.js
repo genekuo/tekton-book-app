@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send({ message: "Hello", change: "three" }).status(200);
+  res.send({ message: "Hello", change: "two" }).status(200);
 });
 
 app.get("/add/:number/:additor", (req, res) => {
