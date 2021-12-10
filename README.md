@@ -113,9 +113,9 @@ ngrok http 8080
     Secret: This is the secret you've stored in the $TEKTON_SECRET environment variables.
 
 server.js ln 6 change to 
-res.send({ message: "Hello", change: "changed three" }).status(200);
+res.send({ message: "Hello", change: "changed one" }).status(200);
 
-git commit -am "Change a server response three"
+git commit -am "Change a server response one"
 git push origin main
 
 tkn pipelineruns ls
