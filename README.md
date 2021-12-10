@@ -73,3 +73,47 @@ res.send({ message: "Hello", change: "changed" }).status(200);
 git commit -am "Change a server response"
 git push origin main
 
+npm run test 
+npm run lint 
+
+docker build -t genedocker/tekton-lab-app .
+docker push genedocker/tekton-lab-app
+
+kubectl rollout restart deployment/tekton-deployment
+
+curl localhost
+
+## Pipeline
+
+tkn hub install task git-clone 
+ 
+tkn hub install task npm 
+
+tkn hub install task kubernetes-actions
+
+kubectl apply -f ./task.yaml
+
+kubectl apply -f ./pipeline.yaml
+
+export TEKTON_SECRET=$(head -c 24 /dev/random | base64)
+kubectl create secret generic git-secret --from-literal=secretToken=$TEKTON_SECRET
+
+echo $TEKTON_SECRET
+
+kubectl apply -f ./trigger.yaml
+
+kubectl port-forward svc/el-listener 8080
+
+brew install ngrok/ngrok/ngrok
+?ngrok authtoken <token>
+ngrok http 8080
+
+server.js ln 6 change to 
+res.send({ message: "Hello", change: "changed twice" }).status(200);
+
+git commit -am "Change a server response twice"
+git push origin main
+
+tkn pipelineruns ls
+ 
+
