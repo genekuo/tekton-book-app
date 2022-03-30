@@ -1,7 +1,8 @@
 # tekton-lab-app
 
 ## kind create cluster
-<code>
+
+```shell
 cat <<EOF | kind create cluster --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -21,7 +22,7 @@ nodes:
     hostPort: 443
     protocol: TCP
 EOF
-<code>
+```
 
 ## Deploy nginx ingress controller
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml`
