@@ -1,6 +1,6 @@
 # tekton-lab-app
 
-## kind create cluster
+## Create KinD cluster
 
 ```shell
 cat <<EOF | kind create cluster --config=-
