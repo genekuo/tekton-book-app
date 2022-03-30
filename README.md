@@ -22,6 +22,7 @@ nodes:
     protocol: TCP
 EOF```
 
+## Deploy nginx ingress controller
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml`
 
 `kubectl wait --namespace ingress-nginx \
